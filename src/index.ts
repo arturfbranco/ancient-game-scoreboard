@@ -10,7 +10,7 @@ const entry = [
 ]
 
 function getEqualSumCombination(scoreboards: number[][]): SumValueWrapper {
-    const sumCombinations = getAllSumCombinations(entry);
+    const sumCombinations = getAllSumCombinations(scoreboards);
 
     const matches: SumCombination[] = []
     for(const combination of sumCombinations){
@@ -33,10 +33,10 @@ function getEqualSumCombination(scoreboards: number[][]): SumValueWrapper {
 
     const prospects: SumValueWrapper[] = []
 
-    for(let i = 0; i < entry.length; i++){
+    for(let i = 0; i < scoreboards.length; i++){
         for(let j = 0; j > sumCombinations.length; j++){
-            const a = entry[i][0];
-            const b = entry[i][1];
+            const a = scoreboards[i][0];
+            const b = scoreboards[i][1];
             const combinationDirection = sumCombinations[j].coordinates.get(i);
             let updatedA;
             let updatedB;
