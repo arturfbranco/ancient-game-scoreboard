@@ -34,6 +34,8 @@ public class ScoreboardProcessor {
             return new SumValueWrapper(highestValue, null);
         }
 
+        Logger.log("Sum mismatch!");
+
         // Get prospects for one scoreboard removal
         ScoreboardRemovalProcessor prospectsProcessor = new ScoreboardRemovalProcessor();
         List<SumValueWrapper> prospects = prospectsProcessor.processProspectsForScoreboardRemoval(scoreboards, sumCombinations);

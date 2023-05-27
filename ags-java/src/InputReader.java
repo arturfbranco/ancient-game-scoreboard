@@ -24,6 +24,7 @@ public class InputReader {
         while (hasNext){
             int scoreboardsSize = Integer.parseInt(br.readLine());
             if(scoreboardsSize > 0){
+                Logger.log("Reading scoreboards with index: " + index);
                 int[][] scoreboards = new int[scoreboardsSize][2];
                 for(int i = 0; i < scoreboardsSize; i++){
                     String[] scoreboard = br.readLine().split(" ");
@@ -36,7 +37,6 @@ public class InputReader {
                 hasNext = false;
             }
         }
-        Logger.log("Number os scoreboards: " + inputData.length);
         return inputData;
     }
 }

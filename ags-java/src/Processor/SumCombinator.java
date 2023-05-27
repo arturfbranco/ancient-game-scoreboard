@@ -12,8 +12,8 @@ public class SumCombinator {
         List<SumCombination> sumCombinations = new ArrayList<>();
         SumCombination root = new SumCombination(0, 0, null);
         sumCombinations.add(root);
-        Logger.log("Starting calculation of possible sums...");
-        Logger.log("0: Direct position / 1: Reverse position");
+        Logger.log("Scoreboards list size: " + scoreboards.length +". Starting calculation of possible sums...");
+
         for(int i = 0; i < scoreboards.length; i++){
             int[] currentScoreboard = scoreboards[i];
             int a = currentScoreboard[0];
