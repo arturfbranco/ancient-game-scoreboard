@@ -17,11 +17,12 @@ public class ScoreboardRemovalProcessor {
         // Go through each scoreboard and test its removal
         for(int i = 0; i < scoreboards.length; i++){
 
+            int a = scoreboards[i][0];
+            int b = scoreboards[i][1];
+
             // Apply removal of scoreboard to each sum combination
             for(SumCombination sumCombination : sumCombinations){
 
-                int a = scoreboards[i][0];
-                int b = scoreboards[i][1];
                 int updatedSumA;
                 int updatedSumB;
 
