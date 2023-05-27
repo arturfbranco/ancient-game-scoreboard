@@ -2,6 +2,7 @@ package Processor;
 
 import Interface.SumCombination;
 import Interface.SumValueWrapper;
+import Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class ScoreboardProcessor {
                     highestValue = sumCombination.getUpSum();
                 }
             }
+            Logger.log("Match found without removal of any scoreboard: " + highestValue);
             return new SumValueWrapper(highestValue, null);
         }
 
@@ -37,12 +39,17 @@ public class ScoreboardProcessor {
         List<SumValueWrapper> prospects = prospectsProcessor.processProspectsForScoreboardRemoval(scoreboards, sumCombinations);
 
         if(prospects.size() == 0){
+            Logger.log("No matches found for given scoreboards");
             return new SumValueWrapper(null, null);
         }
 
         if(prospects.size() == 1){
-            return prospects.get(0);
+            SumValueWrapper result = prospects.get(0);
+            Logger.log("Matching final sum found with removal of one scoreboard. Value: " + result.getValue() + "; Scoreboard removed: " + result.getScoreBoard().getA() + ", " + result.getScoreBoard().getB());
+            return result;
         }
+
+        Logger.log("Number of prospects found: " + prospects.size());
 
         // Get list of prospects with the highest value
         List<SumValueWrapper> highestSums = null;
@@ -62,6 +69,7 @@ public class ScoreboardProcessor {
             return highestSums.get(0);
         }
 
+        Logger.log("Found " + highestSums.size() + " matches with same highest sum");
         // Get scoreboard with highest "a" value
         SumValueWrapper lowestValueForA = null;
 
@@ -70,6 +78,8 @@ public class ScoreboardProcessor {
                 lowestValueForA = sumValue;
             }
         }
+        Logger.log("Matching final sum found with removal of one scoreboard. Value: " + lowestValueForA.getValue() + "; Scoreboard removed: " + lowestValueForA.getScoreBoard().getA() + ", " + lowestValueForA.getScoreBoard().getB());
+
         return lowestValueForA;
     }
 }

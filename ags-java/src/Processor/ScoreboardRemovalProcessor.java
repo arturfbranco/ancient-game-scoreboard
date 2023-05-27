@@ -4,6 +4,7 @@ import Interface.Direction;
 import Interface.ScoreBoard;
 import Interface.SumCombination;
 import Interface.SumValueWrapper;
+import Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,14 @@ public class ScoreboardRemovalProcessor {
 
         List<SumValueWrapper> prospects = new ArrayList<>();
 
+        Logger.log("Looking for match with one scoreboard removal...");
         // Go through each scoreboard and test its removal
         for(int i = 0; i < scoreboards.length; i++){
 
             int a = scoreboards[i][0];
             int b = scoreboards[i][1];
+
+            Logger.log("Testing with removal of: " + a + ", " + b);
 
             // Apply removal of scoreboard to each sum combination
             for(SumCombination sumCombination : sumCombinations){
@@ -36,6 +40,7 @@ public class ScoreboardRemovalProcessor {
                 }
 
                 if(updatedSumA == updatedSumB){
+                    Logger.log("Match found for " + a + ", " + b);
                     // Make sure a < b
                     if(a > b){
                         int aux = a;

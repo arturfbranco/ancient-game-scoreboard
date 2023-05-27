@@ -1,5 +1,9 @@
 package Interface;
 
 public enum Direction {
-    DIRECT, REVERSE
+    DIRECT("0"), REVERSE("1");
+
+    Direction(String number) {
+
+    }
 }
