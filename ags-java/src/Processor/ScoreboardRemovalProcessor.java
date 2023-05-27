@@ -26,21 +26,13 @@ public class ScoreboardRemovalProcessor {
                 int updatedSumA;
                 int updatedSumB;
 
-                // First scoreboard is tree root so is always upwards
-                if(i == 0){
+                Direction direction = sumCombination.getCoordinates().get(i);
+                if(direction.equals(Direction.DIRECT)){
                     updatedSumA = sumCombination.getUpSum() - a;
                     updatedSumB = sumCombination.getDownSum() - b;
-
-                // For others we need to get coordinate metadata to find direction of branch for current sum combination
                 } else {
-                    Direction direction = sumCombination.getCoordinates().get(i);
-                    if(direction.equals(Direction.DIRECT)){
-                        updatedSumA = sumCombination.getUpSum() - a;
-                        updatedSumB = sumCombination.getDownSum() - b;
-                    } else {
-                        updatedSumA = sumCombination.getUpSum() - b;
-                        updatedSumB = sumCombination.getDownSum() - a;
-                    }
+                    updatedSumA = sumCombination.getUpSum() - b;
+                    updatedSumB = sumCombination.getDownSum() - a;
                 }
 
                 if(updatedSumA == updatedSumB){
