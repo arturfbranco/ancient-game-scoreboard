@@ -1,16 +1,15 @@
 package Interface;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class SumCombination {
     private Integer upSum;
     private Integer downSum;
-    private Map<Integer, Direction> coordinates;
 
-    public SumCombination(Integer upSum, Integer downSum, Map<Integer, Direction> coordinates) {
+    public SumCombination(Integer upSum, Integer downSum) {
         this.upSum = upSum;
         this.downSum = downSum;
-        this.coordinates = coordinates;
     }
 
     public SumCombination() {
@@ -32,11 +31,19 @@ public class SumCombination {
         this.downSum = downSum;
     }
 
-    public Map<Integer, Direction> getCoordinates() {
-        return coordinates;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SumCombination otherSumCombination = (SumCombination) o;
+        Integer otherUpSum = otherSumCombination.getUpSum();
+        Integer otherDownSum = otherSumCombination.getDownSum();
+        return otherUpSum.equals(this.upSum) && otherDownSum.equals(this.downSum)
+                || otherUpSum.equals(this.downSum) && otherDownSum.equals(this.upSum);
     }
 
-    public void setCoordinates(Map<Integer, Direction> coordinates) {
-        this.coordinates = coordinates;
+    @Override
+    public int hashCode() {
+        return this.upSum.hashCode() ^ this.downSum.hashCode();
     }
 }

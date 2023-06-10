@@ -6,11 +6,12 @@ import Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ScoreboardProcessor {
 
     public SumValueWrapper queryHighestEqualScoreboardsSum(int[][] scoreboards){
-        List<SumCombination> sumCombinations = new SumCombinator().calculateSumCombinations(scoreboards);
+        Set<SumCombination> sumCombinations = new SumCombinator().calculateSumCombinations(scoreboards);
 
 
         // Look for sum equality without any removal

@@ -10,14 +10,11 @@ public class AgsMain {
     public static void main(String[] args) throws IOException {
 
         if(args.length == 0){
-            System.out.println("Please provide a file path.");
+            System.out.println("Please provide a file path!");
             return;
         }
-        if(args.length > 1){
-            if(Boolean.parseBoolean(args[1])){
-                Logger.enableLogger();
-            }
-
+        if(args.length > 1 && Boolean.parseBoolean(args[1])){
+            Logger.enableLogger();
         }
         InputReader inputReader = new InputReader(args[0]);
         int[][][] inputStructure = inputReader.processFile();

@@ -1,6 +1,5 @@
 package Processor;
 
-import Interface.Direction;
 import Interface.ScoreBoard;
 import Interface.SumCombination;
 import Interface.SumValueWrapper;
@@ -8,10 +7,11 @@ import Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ScoreboardRemovalProcessor {
 
-    public List<SumValueWrapper> processProspectsForScoreboardRemoval(int[][] scoreboards, List<SumCombination> sumCombinations){
+    public List<SumValueWrapper> processProspectsForScoreboardRemoval(int[][] scoreboards, Set<SumCombination> sumCombinations){
 
         List<SumValueWrapper> prospects = new ArrayList<>();
 
@@ -27,19 +27,16 @@ public class ScoreboardRemovalProcessor {
             // Apply removal of scoreboard to each sum combination
             for(SumCombination sumCombination : sumCombinations){
 
-                int updatedSumA;
-                int updatedSumB;
+                Integer upSumMinusA = sumCombination.getUpSum() - a;
+                Integer downSumMinusB = sumCombination.getDownSum() - b;
 
-                Direction direction = sumCombination.getCoordinates().get(i);
-                if(direction.equals(Direction.DIRECT)){
-                    updatedSumA = sumCombination.getUpSum() - a;
-                    updatedSumB = sumCombination.getDownSum() - b;
-                } else {
-                    updatedSumA = sumCombination.getUpSum() - b;
-                    updatedSumB = sumCombination.getDownSum() - a;
-                }
+                Integer upSumMinusB = sumCombination.getUpSum() - b;
+                Integer downSumMinusA = sumCombination.getDownSum() - a;
 
-                if(updatedSumA == updatedSumB){
+                boolean directSubtractionMatch = upSumMinusA.equals(downSumMinusB);
+                boolean reverseSubtractionMatch = upSumMinusB.equals(downSumMinusA);
+
+                if(directSubtractionMatch || reverseSubtractionMatch){
                     Logger.log("Match found for " + a + ", " + b);
                     // Make sure a < b
                     if(a > b){
@@ -47,8 +44,14 @@ public class ScoreboardRemovalProcessor {
                         a = b;
                         b = aux;
                     }
+                    Integer matchValue;
+                    if(directSubtractionMatch){
+                        matchValue = upSumMinusA;
+                    } else {
+                        matchValue = upSumMinusB;
+                    }
                     ScoreBoard scoreBoard = new ScoreBoard(a, b);
-                    SumValueWrapper sumValueWrapper = new SumValueWrapper(updatedSumA, scoreBoard);
+                    SumValueWrapper sumValueWrapper = new SumValueWrapper(matchValue, scoreBoard);
                     prospects.add(sumValueWrapper);
                 }
             }
