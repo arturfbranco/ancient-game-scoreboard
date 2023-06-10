@@ -23,23 +23,30 @@ public class SumCombinator {
 
                 Integer directUpSum = sumCombination.getUpSum() + a;
                 Integer directDownSum = sumCombination.getDownSum() + b;
-
-
                 SumCombination newDirect = new SumCombination(directUpSum, directDownSum);
                 updatedSumCombinations.add(newDirect);
 
-
                 Integer reverseUpSum = sumCombination.getUpSum() + b;
                 Integer reverseDownSum = sumCombination.getDownSum() + a;
-
-
                 SumCombination newReverse = new SumCombination(reverseUpSum, reverseDownSum);
                 updatedSumCombinations.add(newReverse);
+
                 if(i == scoreboards.length - 1){
                     Logger.log("Final sum: A: " + newDirect.getUpSum() + "; B: " + newDirect.getDownSum());
+                    if(newDirect.getUpSum().equals(newDirect.getDownSum())){
+                        return new HashSet<>(List.of(newDirect));
+                    }
                     Logger.log("Final sum: A: " + newReverse.getUpSum() + "; B: " + newReverse.getDownSum());
+                    if(newReverse.getUpSum().equals(newReverse.getDownSum())){
+                        return new HashSet<>(List.of(newReverse));
+                    }
+
                 }
             }
+            int totalCombinations = new Double(Math.pow(2, i)).intValue();
+            Logger.log("Total combinations for index " + i + ": " + totalCombinations);
+            Logger.log("Total actually used combinations for index " + i + ": " + updatedSumCombinations.size());
+            Logger.log("Number of combinations dropped at index " + i + ": " + (totalCombinations - updatedSumCombinations.size()));
             sumCombinations = updatedSumCombinations;
         }
 
