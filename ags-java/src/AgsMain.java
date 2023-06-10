@@ -1,8 +1,10 @@
+import Interface.ElapsedTimeLog;
 import Interface.SumValueWrapper;
 import Processor.ScoreboardProcessor;
 import Util.Logger;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +28,16 @@ public class AgsMain {
             if(inputStructure[i] == null){
                 hasNext = false;
             } else {
+                long start = System.currentTimeMillis();
                 SumValueWrapper result = processor.queryHighestEqualScoreboardsSum(inputStructure[i]);
+                long finish = System.currentTimeMillis();
+                Logger.logTime(inputStructure[i].length, finish - start);
                 outputStructure.add(result);
                 i++;
             }
         }
         OutputBuilder outputBuilder = new OutputBuilder();
         outputBuilder.sendOutput(outputStructure);
+        outputBuilder.printTimes();
     }
 }
