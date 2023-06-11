@@ -16,7 +16,7 @@ O programa vai criando branches e armazenando os resultados em um array (sempre 
 Ao fim, ao computar a última placa, este possuirá um array com todas as folhas, ou seja, todas as 2^n somas possíveis.
 <br>
 Aplicou-se sobre esse funcionamento um método de otimização de branch and bound, ou seja, de eliminação de caminhos não relevantes da árvore a cada nível.
-Para tal, ao invés de se utilizar um array normal utilizou-se um conjunto de forma que, a cada nível, não sejam adicionados nós com somas iguais.
+Para tal, ao invés de se utilizar um array normal utilizou-se a estrutura de dados conjunto(set) de forma que, a cada nível, não sejam adicionados nós com somas iguais.
 <br>
 Ainda, caso não seja encontrada uma combinação que sacie as exigências, este verifica a possibilidade de eliminar uma das placas.
 
