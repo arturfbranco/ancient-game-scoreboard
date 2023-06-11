@@ -18,7 +18,7 @@ public class SumCombinator {
             int a = currentScoreboard[0];
             int b = currentScoreboard[1];
             Set<SumCombination> updatedSumCombinations = new HashSet<>();
-            Logger.log("Computing scoreboard with index " + i + " and values " + a + " and " + b);
+            Logger.log("Computing scoreboard for N = " + (i + 1) + " and values " + a + " and " + b);
             for(SumCombination sumCombination: sumCombinations){
 
                 Integer directUpSum = sumCombination.getUpSum() + a;
@@ -43,10 +43,10 @@ public class SumCombinator {
 
                 }
             }
-            int totalCombinations = new Double(Math.pow(2, i)).intValue();
-            Logger.log("Total combinations for index " + i + ": " + totalCombinations);
-            Logger.log("Total actually used combinations for index " + i + ": " + updatedSumCombinations.size());
-            Logger.log("Number of combinations dropped at index " + i + ": " + (totalCombinations - updatedSumCombinations.size()));
+            int totalCombinations = new Double(Math.pow(2, i + 1)).intValue();
+            Logger.log("Total combinations for N = " + (i + 1) + ": " + totalCombinations);
+            Logger.log("Total actually used combinations for N = " + (i + 1) + ": " + updatedSumCombinations.size());
+            Logger.log("Number of combinations dropped at N = " + (i + 1) + ": " + (totalCombinations - updatedSumCombinations.size()));
             sumCombinations = updatedSumCombinations;
         }
 
