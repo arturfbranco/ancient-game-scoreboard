@@ -35,3 +35,7 @@ Este parâmetro possibilita a visualizar/exportar logs e estatísticas a respeit
 ```stats``` - Exibe no formato CSV estatísticas a respeito do método de otimização Branch and Bound utilizado e sua eficácia. O CSV correlaciona N, total de combinações, combinações realmente consideradas, combinações desconsideradas e branches da árvore eliminadas a cada etapa. De forma a produzir um CSV limpo, este parâmetro bloqueia a exibição do resultado final, servindo apenas para a produção de estatísticas.<br>
 ```time``` - Correlaciona no formato CSV o tamanho da entrada (N) com o tempo total de execução até se chegar a uma resposta. Sua utilização bloqueia a exibição do resultado final.<br>
 ```all``` - Exibe todos os logs, stats, time e resultado final.
+
+###### Sugestão para exportar os arquivos CSV
+Sugere-se utilizar o operador ```>``` na hora de executar o programa, passando na sequência o path para a geração do arquivo. Segue o exemplo:<br>
+```java AgsMain testCases/in3 stats > generatedFiles/myStats.csv```
