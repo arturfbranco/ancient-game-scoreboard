@@ -1,5 +1,6 @@
 package Processor;
 
+import Interface.PerformanceStats;
 import Interface.SumCombination;
 import Util.Logger;
 
@@ -19,18 +20,25 @@ public class SumCombinator {
             int b = currentScoreboard[1];
             Set<SumCombination> updatedSumCombinations = new HashSet<>();
             Logger.log("Computing scoreboard for N = " + (i + 1) + " and values " + a + " and " + b);
+            int droppedBranches = 0;
             for(SumCombination sumCombination: sumCombinations){
 
                 Integer directUpSum = sumCombination.getUpSum() + a;
                 Integer directDownSum = sumCombination.getDownSum() + b;
                 SumCombination newDirect = new SumCombination(directUpSum, directDownSum);
-                updatedSumCombinations.add(newDirect);
+                boolean addedDirect = updatedSumCombinations.add(newDirect);
 
                 Integer reverseUpSum = sumCombination.getUpSum() + b;
                 Integer reverseDownSum = sumCombination.getDownSum() + a;
                 SumCombination newReverse = new SumCombination(reverseUpSum, reverseDownSum);
-                updatedSumCombinations.add(newReverse);
+                boolean addedReverse = updatedSumCombinations.add(newReverse);
 
+                if(!addedDirect){
+                    droppedBranches++;
+                }
+                if(!addedReverse){
+                    droppedBranches++;
+                }
                 if(i == scoreboards.length - 1){
                     Logger.log("Final sum: A: " + newDirect.getUpSum() + "; B: " + newDirect.getDownSum());
                     if(newDirect.getUpSum().equals(newDirect.getDownSum())){
@@ -43,13 +51,9 @@ public class SumCombinator {
 
                 }
             }
-            int totalCombinations = new Double(Math.pow(2, i + 1)).intValue();
-            Logger.log("Total combinations for N = " + (i + 1) + ": " + totalCombinations);
-            Logger.log("Total actually used combinations for N = " + (i + 1) + ": " + updatedSumCombinations.size());
-            Logger.log("Number of combinations dropped at N = " + (i + 1) + ": " + (totalCombinations - updatedSumCombinations.size()));
+            Logger.logPerformanceStats(i + 1, updatedSumCombinations.size(), droppedBranches);
             sumCombinations = updatedSumCombinations;
         }
-
         return sumCombinations;
     }
 }

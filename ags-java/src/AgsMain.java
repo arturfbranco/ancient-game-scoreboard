@@ -2,6 +2,7 @@ import Interface.ElapsedTimeLog;
 import Interface.SumValueWrapper;
 import Processor.ScoreboardProcessor;
 import Util.Logger;
+import Util.Options;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -9,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgsMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         if(args.length == 0){
             System.out.println("Please provide a file path!");
             return;
         }
-        if(args.length > 1 && Boolean.parseBoolean(args[1])){
-            Logger.enableLogger();
+        if(args.length > 1){
+            configureOptions(Options.valueOf(args[1].toUpperCase()));
         }
         InputReader inputReader = new InputReader(args[0]);
         int[][][] inputStructure = inputReader.processFile();
@@ -37,7 +38,31 @@ public class AgsMain {
             }
         }
         OutputBuilder outputBuilder = new OutputBuilder();
-        outputBuilder.sendOutput(outputStructure);
         outputBuilder.printTimes();
+        outputBuilder.printStats();
+        outputBuilder.sendOutput(outputStructure);
+    }
+
+    public static void configureOptions(Options option) throws Exception {
+        switch (option){
+            case ALL:
+                Logger.enableLogger();
+                Logger.enableElapsedTime();
+                Logger.enablePerformanceStats();
+                break;
+            case LOGS:
+                Logger.enableLogger();
+                break;
+            case TIME:
+                Logger.enableElapsedTime();
+                OutputBuilder.blockOutput();
+                break;
+            case STATS:
+                Logger.enablePerformanceStats();
+                OutputBuilder.blockOutput();
+                break;
+            default:
+                throw new Exception();
+        }
     }
 }
