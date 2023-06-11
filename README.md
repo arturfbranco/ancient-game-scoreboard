@@ -21,7 +21,7 @@ Para tal, ao invés de se utilizar um array normal utilizou-se a estrutura de da
 Ainda, caso não seja encontrada uma combinação que sacie as exigências, este verifica a possibilidade de eliminar uma das placas.
 
 ### Como utilizar
-1. Buildar todos os arquivos .java da pasta src/. Uma forma de fazê-lo no terminal é através do comando ```find . -name "*.java" -print | xargs javac```
+1. Buildar todos os arquivos .java da pasta src/. Uma forma de fazê-lo no terminal é através do comando ```find . -name "*.java" -print | xargs javac``` de dentro da pasta ```src```.
 
 2. Para rodar basta executar o arquivo AgsMain passando os parâmetros necessários.
 
