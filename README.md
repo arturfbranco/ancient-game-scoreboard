@@ -4,7 +4,7 @@
 O presente algoritmo analisa N pares de números (A,B) e os respectivos arrays formados pela combinação linear de As e Bs.
 Seu objetivo é descobrir se é possível através da permutação de As e Bs, e/ou da remoção de 1 dos pares, chegar a dois arrays com somas iguais.
 #### Situação hipotética
-Sopõe-se que se tem em mãos um conjunto de N placas. Cada placa possui dois números (um superior e um inferior).
+Supõe-se que se tem em mãos um conjunto de N placas. Cada placa possui dois números (um superior e um inferior).
 Ao posicionar todas as placas lado a lado forma-se uma sequência de números superiores e uma sequência de números inferiores.
 Busca-se descobrir se através da rotação das placas é possível fazer com que a soma destas duas sequências seja igual.
 Além disso, caso a conclusão seja negativa, torna-se possível remover uma das placas, com o imperativo de que seja removida a placa que produza a maior soma possível.
