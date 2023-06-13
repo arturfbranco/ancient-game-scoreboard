@@ -21,9 +21,10 @@ Para tal, ao invés de se utilizar um array normal utilizou-se a estrutura de da
 Ainda, caso não seja encontrada uma combinação que sacie as exigências, este verifica a possibilidade de eliminar uma das placas.
 
 ### Como utilizar
-1. Buildar todos os arquivos .java da pasta src/. Uma forma de fazê-lo no terminal é através do comando ```find . -name "*.java" -print | xargs javac``` de dentro da pasta ```src```.
+A POC para o desenvolvimento do algoritmo foi realizada em Typescript, entretanto, a implementação final é aquela na pasta ags-java. O conteúdo de ags-typescript pode ser desconsiderado.<br>
+1. Buildar todos os arquivos .java da pasta ags-java/src/. Uma forma de fazê-lo no terminal é através do comando ```find . -name "*.java" -print | xargs javac``` de dentro da pasta ```src```.
 
-2. Para rodar basta executar o arquivo AgsMain passando os parâmetros necessários.
+2. Para rodar basta executar o arquivo AgsMain (dentro de ags-java/src, ```java AgsMain <parameter1> <parameter2>```) passando os parâmetros necessários.
 
 #### Parâmetros
 O programa recebe dois parâmetros, sendo o primeiro obrigatório e o segundo opcional.<br>
