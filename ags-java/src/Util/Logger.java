@@ -31,8 +31,8 @@ public class Logger {
 
     public static void logPerformanceStats(Integer n, Integer combinationsSize, Integer droppedBranches){
         if(performanceStatsEnabled){
-            Integer totalCombinations = (int) Math.floor(Math.pow(2, n));
-            Integer droppedCombinations = totalCombinations - combinationsSize;
+            Long totalCombinations = (long) Math.floor(Math.pow(2, n));
+            Long droppedCombinations = totalCombinations - combinationsSize;
             PerformanceStats stats = new PerformanceStats(n, totalCombinations, combinationsSize, droppedCombinations, droppedBranches);
             performanceStats.add(stats);
         }
