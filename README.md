@@ -1,5 +1,5 @@
 # ancient-game-scoreboard
-
+por Artur Branco e Willian Weyh
 ### Introdução
 O presente algoritmo analisa N pares de números (A,B) e os respectivos arrays formados pela combinação linear de As e Bs.
 Seu objetivo é descobrir se é possível através da permutação de As e Bs, e/ou da remoção de 1 dos pares, chegar a dois arrays com somas iguais.
