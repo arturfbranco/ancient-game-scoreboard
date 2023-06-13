@@ -2,16 +2,12 @@ package Interface;
 
 public class PerformanceStats {
     private Integer n;
-    private Integer totalCombinations;
+    private Long totalCombinations;
     private Integer usedCombinations;
-    private Integer droppedCombinations;
+    private Long droppedCombinations;
     private Integer newDroppedBrances;
 
-    public PerformanceStats(Integer n,
-                            Integer totalCombinations,
-                            Integer usedCombinations,
-                            Integer droppedCombinations,
-                            Integer newDroppedBrances) {
+    public PerformanceStats(Integer n, Long totalCombinations, Integer usedCombinations, Long droppedCombinations, Integer newDroppedBrances) {
         this.n = n;
         this.totalCombinations = totalCombinations;
         this.usedCombinations = usedCombinations;
@@ -27,11 +23,11 @@ public class PerformanceStats {
         this.n = n;
     }
 
-    public Integer getTotalCombinations() {
+    public Long getTotalCombinations() {
         return totalCombinations;
     }
 
-    public void setTotalCombinations(Integer totalCombinations) {
+    public void setTotalCombinations(Long totalCombinations) {
         this.totalCombinations = totalCombinations;
     }
 
@@ -43,11 +39,11 @@ public class PerformanceStats {
         this.usedCombinations = usedCombinations;
     }
 
-    public Integer getDroppedCombinations() {
+    public Long getDroppedCombinations() {
         return droppedCombinations;
     }
 
-    public void setDroppedCombinations(Integer droppedCombinations) {
+    public void setDroppedCombinations(Long droppedCombinations) {
         this.droppedCombinations = droppedCombinations;
     }
 
